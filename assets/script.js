@@ -9,6 +9,16 @@ const charset = {
 function generatePassword() {
   var passwordSet ="";
 
+  var length = window.prompt("How long do you want your password? Enter a number from 8 to 128.");
+  if (length < 8) {
+    alert("Must be between 8 and 128.")
+    return;
+  }
+  else if (length > 128) {
+    alert("Must be between 8 and 128.")
+  return;
+  }
+  
   var numbers = window.confirm("Would you like to use numbers? Yes = 'Ok', No = 'Cancel'.");
   if (numbers) {
     passwordSet += charset.number;
@@ -29,8 +39,7 @@ function generatePassword() {
     passwordSet += charset.extended;
   };
 
-  var length = window.prompt("How long do you want your password? Enter a number from 8 to 128.");
-
+  
   var password = "";
   for (var i = 0; i < length; i++) {
     password += passwordSet[Math.floor(Math.random() * passwordSet.length)]
